@@ -197,6 +197,7 @@ client.focused_inactive  $inactive-bg-color $inactive-bg-color $inactive-text-co
 client.urgent  $urgent-bg-color $urgent-bg-color $text-color $bg-color
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id picom --experimental-backends
 exec --no-startup-id nitrogen --restore
 
 focus_follows_mouse no
