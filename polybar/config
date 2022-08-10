@@ -17,14 +17,14 @@
 ;==========================================================
 
 [colors]
-background = #2E3440
+background = #C82E3440
 buffer = #4c566a
 foreground = #D8DEE9
 nord6 = #ECEFF4
 nord7 = #8FBCBB
 nord8 = #88C0D0
 nord9 = #81A1C1
-primary = #88C0D0
+primary = #FA8072
 urgent = #BF616A
 warning = #D08770
 notify = #EBCB8B
@@ -35,20 +35,23 @@ function = #B48EAD
 monitor = ${env:MONITOR:}
 width = 100%
 height = 24pt
-radius = 6
+radius = 0
 
 ; dpi = 96
 
 background = ${colors.background}
+; background = #000000ff
 foreground = ${colors.foreground}
 
-line-size = 3pt
+line-size = 2pt
 
-border-size = 4pt
-border-color = #00000000
+border-bottom-size = 2pt
+border-right-size = 8pt
+border-left-size = 8pt
+border-bottom-color = ${colors.primary}
 
 padding-left = 0
-padding-right = 1
+padding-right = 0
 
 module-margin = 1
 
@@ -57,9 +60,9 @@ separator-foreground = ${colors.disabled}
 
 font-0 = CaskaydiaCove Nerd Font;2
 
-modules-left = xworkspaces xwindow
+modules-left = appmenu xworkspaces xwindow
 modules-center = spotify
-modules-right = filesystem pulseaudio xkeyboard memory cpu wlan eth battery date
+modules-right = filesystem pulseaudio xkeyboard memory cpu wlan eth battery date shutdown
 
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -74,6 +77,30 @@ enable-ipc = true
 
 ; override-redirect = true
 
+[module/appmenu]
+type = custom/script
+exec = echo " גּ "
+click-left = rofi -show drun -show-icons
+
+format-background = ${colors.primary}
+label-background = ${colors.primary}
+label-padding-right = 6pt
+label-padding-left = 2pt
+
+; $HOME/.config/rofi/bin/applet_powermenu
+
+
+[module/shutdown]
+type = custom/script
+exec = echo "  "
+click-left = $HOME/.config/rofi/bin/applet_powermenu
+
+format-background = ${colors.primary}
+label-background = ${colors.primary}
+label-padding-right = 6pt
+label-padding-left = 2pt
+
+
 [module/xworkspaces]
 type = internal/xworkspaces
 
@@ -81,7 +108,8 @@ pin-workspaces = true
 
 label-active = %name%
 label-active-background = ${colors.background-alt}
-label-active-underline= ${colors.primary}
+
+label-active-overline= ${colors.primary}
 label-active-padding = 1
 
 label-occupied = %name%

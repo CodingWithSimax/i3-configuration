@@ -1,16 +1,6 @@
+/** Basic config file **/
+
 configuration {
-    font: "Envy Code R 13";
-    width: 30;
-    line-margin: 10;
-    lines: 6;
-
-    display-ssh:    "";
-    display-run:    "";
-    display-drun:   "";
-    display-window: "";
-    display-combi:  "";
-    show-icons:     true;
+  show-icons:         true;
+  icon-theme:         "Papirus";
 }
-
-
-@theme "~/.config/rofi/nord.rasi"
