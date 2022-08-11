@@ -31,7 +31,7 @@ notify = #EBCB8B
 success = #A3BE8C
 function = #B48EAD
 
-[bar/example]
+[bar/default]
 monitor = ${env:MONITOR:}
 width = 100%
 height = 24pt
@@ -69,7 +69,7 @@ cursor-scroll = ns-resize
 
 enable-ipc = true
 
-; tray-position = right
+tray-position = ${env:TRAY_POSITION:}
 
 ; wm-restack = generic
 ; wm-restack = bspwm
