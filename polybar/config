@@ -19,6 +19,7 @@
 [colors]
 background = #C82E3440
 buffer = #4c566a
+disabled = #4c566a
 foreground = #D8DEE9
 foreground2 = #FACABF 
 primary = #FA8072
@@ -59,7 +60,7 @@ font-0 = CaskaydiaCove Nerd Font;2
 
 modules-left = appmenu i3 xwindow
 modules-center = spotify
-modules-right = filesystem pulseaudio xkeyboard memory cpu wlan eth battery date shutdown
+modules-right = filesystem pulseaudio memory cpu wlan eth battery date shutdown
 
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -100,6 +101,8 @@ label-padding-left = 2pt
 [module/i3]
 type = internal/i3
 pin-workspaces = true
+
+show-urgent = true
 
 label-visible-overline = ${colors.foreground2}
 label-visible-padding-right = 1
@@ -154,21 +157,37 @@ hook-1 = spotifyctl -q status --format '%artist%: %title%'
 [module/pulseaudio]
 type = internal/pulseaudio
 
-format-volume-prefix = "VOL "
-format-volume-prefix-foreground = ${colors.primary}
+format-volume-prefix = "VOL"
+format-volume-prefix-padding = 1
+format-volume-prefix-foreground = ${colors.foreground}
+format-volume-prefix-background = ${colors.primary}
+
 format-volume = <label-volume>
 
 label-volume = %percentage%%
+label-volume-background = ${colors.urgent}
+label-volume-padding = 1
+label-volume-underline=${colors.foreground2}
 
 label-muted = muted
-label-muted-foreground = ${colors.disabled}
+label-muted-background = ${colors.urgent}
+label-muted-padding = 1
+label-muted-underline=${colors.foreground2}
+format-muted-prefix = "VOL"
+format-muted-prefix-padding = 1
+format-muted-prefix-foreground = ${colors.foreground}
+format-muted-prefix-background = ${colors.primary}
+
 
 [module/xkeyboard]
 type = internal/xkeyboard
 blacklist-0 = num lock
 
 label-layout = %layout%
-label-layout-foreground = ${colors.primary}
+label-layout-foreground = ${colors.foreground}
+label-layout-background = ${colors.urgent}
+label-layout-underline = ${colors.foreground2}
+label-layout-padding = 1
 
 label-indicator-padding = 2
 label-indicator-margin = 1
@@ -178,16 +197,28 @@ label-indicator-background = ${colors.secondary}
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = "RAM "
-format-prefix-foreground = ${colors.primary}
+format-prefix = "RAM"
+format-prefix-padding = 1
+format-prefix-foreground = ${colors.foreground}
+format-prefix-background = ${colors.primary}
 label = %percentage_used:2%%
+label-padding = 1
+label-foreground = ${colors.foreground}
+label-background = ${colors.urgent}
+label-underline = ${colors.foreground2}
 
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = "CPU "
-format-prefix-foreground = ${colors.primary}
-label = %percentage:2%%
+format-prefix = "CPU"
+format-prefix-padding = 1
+format-prefix-foreground = ${colors.foreground}
+format-prefix-background = ${colors.primary}
+label = %percentage:02%%
+label-foreground = ${colors.foreground}
+label-background = ${colors.urgent}
+label-underline = ${colors.foreground2}
+label-padding = 1
 
 [network-base]
 type = internal/network
