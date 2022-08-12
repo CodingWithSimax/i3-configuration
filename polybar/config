@@ -20,10 +20,7 @@
 background = #C82E3440
 buffer = #4c566a
 foreground = #D8DEE9
-nord6 = #ECEFF4
-nord7 = #8FBCBB
-nord8 = #88C0D0
-nord9 = #81A1C1
+foreground2 = #FACABF 
 primary = #FA8072
 urgent = #BF616A
 warning = #D08770
@@ -60,7 +57,7 @@ separator-foreground = ${colors.disabled}
 
 font-0 = CaskaydiaCove Nerd Font;2
 
-modules-left = appmenu xworkspaces xwindow
+modules-left = appmenu i3 xwindow
 modules-center = spotify
 modules-right = filesystem pulseaudio xkeyboard memory cpu wlan eth battery date shutdown
 
@@ -100,28 +97,37 @@ label-background = ${colors.primary}
 label-padding-right = 6pt
 label-padding-left = 2pt
 
-
-[module/xworkspaces]
-type = internal/xworkspaces
-
+[module/i3]
+type = internal/i3
 pin-workspaces = true
 
-label-active = %name%
-label-active-background = ${colors.background-alt}
+label-visible-overline = ${colors.foreground2}
+label-visible-padding-right = 1
+label-focused-overline = ${colors.primary}
+label-focused-padding-right = 1
+label-unfocused-padding-right = 1
 
-label-active-overline= ${colors.primary}
-label-active-padding = 1
+; [module/xworkspaces]
+; type = internal/xworkspaces
 
-label-occupied = %name%
-label-occupied-padding = 1
+; pin-workspaces = true
 
-label-urgent = %name%
-label-urgent-background = ${colors.alert}
-label-urgent-padding = 1
+; label-active = %name%
+; label-active-background = ${colors.background-alt}
 
-label-empty = %name%
-label-empty-foreground = ${colors.disabled}
-label-empty-padding = 1
+; label-active-overline= ${colors.primary}
+; label-active-padding = 1
+
+; label-occupied = %name%
+; label-occupied-padding = 1
+
+; label-urgent = %name%
+; label-urgent-background = ${colors.alert}
+; label-urgent-padding = 1
+
+; label-empty = %name%
+; label-empty-foreground = ${colors.disabled}
+; label-empty-padding = 1
 
 [module/spotify]
 type = custom/ipc
