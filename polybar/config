@@ -60,7 +60,7 @@ font-0 = CaskaydiaCove Nerd Font;2
 
 modules-left = appmenu i3 xwindow
 modules-center = spotify
-modules-right = filesystem pulseaudio memory cpu wlan eth battery date shutdown
+modules-right = filesystem pulseaudio memory cpu battery date shutdown
 
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -109,6 +109,8 @@ label-visible-padding-right = 1
 label-focused-overline = ${colors.primary}
 label-focused-padding-right = 1
 label-unfocused-padding-right = 1
+label-urgent-padding-right = 1
+label-urgent-foreground = ${colors.primary}
 
 ; [module/xworkspaces]
 ; type = internal/xworkspaces
@@ -242,13 +244,28 @@ battery = BAT1
 adapter = ACAD
 full-at = 100
 label-full = %percentage%%
-format-full =  <label-full>
+label-full-background = ${colors.urgent}
+label-full-padding = 1
+label-full-underline = ${colors.foreground2}
+format-full-prefix = 
+format-full-prefix-background = ${colors.primary}
+format-full-prefix-padding = 1
 
-label-charging = %percentage%% %time%
-format-charging =  <label-charging>
+label-charging = %percentage%%
+label-charging-background = ${colors.urgent}
+label-charging-padding = 1
+label-charging-underline = ${colors.foreground2}
+format-charging-prefix = 
+format-charging-prefix-background = ${colors.primary}
+format-charging-prefix-padding = 1
 
-label-discharging = %percentage%% %time%
-format-discharging =  <label-discharging>
+label-discharging = %percentage%%
+label-discharging-background = ${colors.urgent}
+label-discharging-padding = 1
+label-discharging-underline = ${colors.foreground2}
+format-discharging-prefix = 
+format-discharging-prefix-background = ${colors.primary}
+format-discharging-prefix-padding = 1
 
 [module/date]
 type = internal/date
