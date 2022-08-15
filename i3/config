@@ -183,6 +183,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 bindsym $mod+l exec --no-startup-id $HOME/.config/rofi/bin/applet_powermenu
+bindsym $mod+b exec --no-startup-id $HOME/.config/rofi/bin/applet_backlight
 
 bindsym XF86AudioPlay exec --no-startup-id spotifyctl playpause &
 bindsym XF86AudioNext exec --no-startup-id spotifyctl next &
