@@ -79,11 +79,11 @@ run_rofi() {
 # Execute Command
 run_cmd() {
 	if [[ "$1" == '--opt1' ]]; then
-		light -A 5
+		xbacklight -inc 10
 	elif [[ "$1" == '--opt2' ]]; then
-		light -S 25
+		xbacklight -S 25
 	elif [[ "$1" == '--opt3' ]]; then
-		light -U 5
+		xbacklight -dec 10
 	elif [[ "$1" == '--opt4' ]]; then
 		xfce4-power-manager-settings
 	fi
