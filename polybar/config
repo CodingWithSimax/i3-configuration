@@ -82,7 +82,7 @@ click-left = $HOME/.config/rofi/launchers/type-6/launcher.sh
 
 format-background = ${colors.primary}
 label-background = ${colors.primary}
-label-padding-right = 6pt
+label-padding-right = 3pt
 label-padding-left = 2pt
 
 ; $HOME/.config/rofi/bin/applet_powermenu
@@ -95,7 +95,7 @@ click-left = $HOME/.config/rofi/powermenu/type-5/powermenu.sh
 
 format-background = ${colors.primary}
 label-background = ${colors.primary}
-label-padding-right = 6pt
+label-padding-right = 3pt
 label-padding-left = 2pt
 
 [module/i3]
