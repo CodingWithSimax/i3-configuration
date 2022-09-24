@@ -197,8 +197,8 @@ set $inactive-bg-color #2f343f
 set $text-color #f3f4f5
 set $active-text-color #000000
 set $inactive-text-color #676E7D
-set $urgent-bg-color #716251
-set $active-bg-color #E25F3E
+set $urgent-bg-color #f8f8f2
+set $active-bg-color #bd93f9
 
 ###Window colors  
 ###Fields: identifier border background text indicator
