@@ -225,3 +225,4 @@ for_window [class="overlay-test"] border pixel 0
 
 gaps inner 6
 gaps outer 2
+smart_gaps on
