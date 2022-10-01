@@ -185,9 +185,9 @@ bindsym $mod+r mode "resize"
 bindsym $mod+l exec --no-startup-id $HOME/.config/rofi/applets/bin/powermenu.sh
 bindsym $mod+b exec --no-startup-id $HOME/.config/rofi/applets/bin/brightness.sh
 
-bindsym XF86AudioPlay exec --no-startup-id spotifyctl playpause &
-bindsym XF86AudioNext exec --no-startup-id spotifyctl next &
-bindsym XF86AudioPrev exec --no-startup-id spotifyctl previous &
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause &
+bindsym XF86AudioNext exec --no-startup-id playerctl next &
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous &
 
 bindsym Print exec --no-startup-id $HOME/.config/rofi/applets/bin/screenshot.sh
 
@@ -217,8 +217,8 @@ exec --no-startup-id nitrogen --restore
 focus_follows_mouse no
 
 exec --no-startup-id /usr/bin/spotify
-for_window [class="Spotify"] move container to workspace $ws10; workspace number 10; move workspace to output HDMI-1; workspace number 2
-for_window [class="discord"] move container to workspace $ws9; workspace number 9; move workspace to output HDMI-1
+for_window [class="Spotify"] move container to workspace $ws10; workspace number 10; move workspace to output HDMI-2; workspace number 2
+for_window [class="discord"] move container to workspace $ws9; workspace number 9; move workspace to output HDMI-2
 
 for_window [class="^.*"] border pixel 2
 for_window [class="overlay-test"] border pixel 0
