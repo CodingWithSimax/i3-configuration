@@ -1,6 +1,6 @@
 MAKE_CUSTOM_RESOLUTION=false
 
-if [ MAKE_CUSTOM_RESOLUTION = true ] then    
+if [ MAKE_CUSTOM_RESOLUTION = true ]; then    
     xrandr --output HDMI-2 --off
     xrandr --output DP-1 --mode 3840x1080 --rate 120
     xrandr --setmonitor DP-1-1 2560/800x1080/340+0+0 DP-1
