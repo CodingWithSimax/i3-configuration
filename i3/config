@@ -215,7 +215,7 @@ include ~/.config/i3/resolution.conf
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec_always --no-startup-id picom --experimental-backends
 exec_always --no-startup-id /usr/bin/alternating_layouts.py
-exec --no-startup-id nitrogen --restore
+# exec_always --no-startup-id nitrogen --restore
 
 focus_follows_mouse no
 
