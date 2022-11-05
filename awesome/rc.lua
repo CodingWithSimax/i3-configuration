@@ -65,6 +65,7 @@ require("user.autostart")()
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
+    awful.layout.suit.spiral.dwindle,
     awful.layout.suit.tile,
     awful.layout.suit.floating,
     awful.layout.suit.tile.left,
@@ -73,7 +74,6 @@ awful.layout.layouts = {
     awful.layout.suit.fair,
     awful.layout.suit.fair.horizontal,
     awful.layout.suit.spiral,
-    awful.layout.suit.spiral.dwindle,
     awful.layout.suit.max,
     awful.layout.suit.max.fullscreen,
     awful.layout.suit.magnifier,
@@ -431,7 +431,13 @@ awful.rules.rules = {
                      keys = clientkeys,
                      buttons = clientbuttons,
                      screen = awful.screen.preferred,
-                     placement = awful.placement.no_overlap+awful.placement.no_offscreen
+                     placement = awful.placement.no_overlap+awful.placement.no_offscreen,
+                     min_width = 0,
+                     min_height = 0,
+                     width = 10,
+                     height = 10,
+                     maximized_vertical = false,
+                     maximized_horizontal = false
      }
     },
 
@@ -488,6 +494,9 @@ client.connect_signal("manage", function (c)
     -- c.shape = function (cr, w, h)
     --     gears.shape.rounded_rect(cr, w, h, 8)
 -- end
+
+    -- c.size_hints.min_width = 0
+    -- c.size_hints.min_height = 0
 
     if awesome.startup
       and not c.size_hints.user_position
