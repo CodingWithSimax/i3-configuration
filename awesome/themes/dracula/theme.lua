@@ -13,6 +13,8 @@ local themes_path = gfs.get_themes_dir()
 local theme = {}
 local palette = require('themes.dracula.palette')
 
+local gears = require('gears')
+
 theme.font          = "CaskaydiaCove Nerd Font Regular 12"
 
 theme.bg_normal     = "#222222"
@@ -33,6 +35,15 @@ theme.border_normal = "#282a36"
 theme.border_focus  = "#bd93f9"
 theme.border_marked = "#91231c"
 theme.gap_single_client = false
+
+theme.notification_max_height = 120
+theme.notification_opacity = 0.7
+theme.notification_bg = palette.background
+theme.notification_fg = palette.foreground
+theme.notification_border_color = palette.current_line
+theme.notification_shape = function (cr, w, h )
+    gears.shape.rounded_rect(cr, w, h, 8)
+end
 
 -- There are other variable sets
 -- overriding the default one when
