@@ -23,18 +23,11 @@ local function update(client)
                 end
             end
         end
-
-        -- c.shape = function (cr, w, h)
-        --     gears.shape.rounded_rect(cr, w, h, 8)
-        -- end
     end)
 end
 
 return function (client)
-    -- client.connect_signal("list", function (c)
-    --     update(client)
-    -- end)
-    client.connect_signal("swap", function (c) update(client) end)
+    client.connect_signal("property::screen", function (c) update(client) end)
     client.connect_signal("manage", function (c)
         update(client)
     end)

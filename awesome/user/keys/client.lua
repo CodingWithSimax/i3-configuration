@@ -61,6 +61,21 @@ function clientkeys.update_keys(globalkeys, modkey)
                 awful.client.swap.global_bydirection("down")
             end,
             {description="client movement", group="awesome"}
+        ),
+
+        awful.key(
+            {modkey}, "e",
+            function ()
+                awful.screen.focus_relative(1)
+            end,
+            {description="client movement", group="awesome"}
+        ),
+        awful.key(
+            {modkey}, "q",
+            function ()
+                awful.screen.focus_relative(-1)
+            end,
+            {description="client movement", group="awesome"}
         )
     )
 end
