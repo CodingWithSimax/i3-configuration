@@ -8,7 +8,3 @@ if [ MAKE_CUSTOM_RESOLUTION = true ]; then
 else
     xrandr --output HDMI-1 --mode 1920x1080 --pos 1920x0 --output DP-0 --mode 1920x1080 --pos 0x0
 fi
-
-sleep 3
-
-nitrogen --restore

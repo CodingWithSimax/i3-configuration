@@ -53,7 +53,7 @@ return function (s, color, h, force_width)
         {
             {
                 text,
-                widget = wibox.widget.background,
+                widget = wibox.container.background,
                 fg = palette.current_line
             },
             widget = wibox.container.margin,
@@ -61,12 +61,19 @@ return function (s, color, h, force_width)
             right = m + margin
         },
 
-        layout = wibox.layout.stack
+        layout = wibox.layout.stack,
     }
 
     return {
         widget = w,
         bar = bar,
-        text = text
+        text = text,
+        set_hidden = function (state)
+            if state then
+                w.forced_width = 0
+            else
+                w.forced_width = nil
+            end
+        end
     }
 end

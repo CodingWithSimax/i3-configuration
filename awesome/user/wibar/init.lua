@@ -16,6 +16,7 @@ local ram = require('user.wibar.ram')
 local volume = require('user.wibar.volume')
 local tray = require('user.wibar.tray')
 local battery = require('user.wibar.battery')
+local music = require('user.wibar.music')
 
 local palette = require('themes.dracula.palette')
 
@@ -58,6 +59,7 @@ return function (s)
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             keyboard(s, height, palette.cyan),
+            music(s, palette.purple, height),
             volume(s, palette.purple, height),
             ram(s, palette.red, height),
             textclock(s, height, palette.yellow),
