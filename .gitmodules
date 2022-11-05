@@ -1,3 +1,6 @@
 [submodule "nvim"]
 	path = nvim
 	url = https://github.com/CodingWithSimax/nvim-configuration.git
+[submodule "awesome/themes/dracula/wallpapers"]
+	path = awesome/themes/dracula/wallpapers
+	url = https://github.com/dracula/wallpaper.git
