@@ -29,7 +29,7 @@ return function (s, color, h, force_width)
     local m = h/2
 
     local text = wibox.widget {
-        widget = wibox.widget.textbox,
+        widget = wibox.widget.textbox
     }
     local bar = wibox.widget {
         -- widget,
@@ -44,13 +44,18 @@ return function (s, color, h, force_width)
         end),
 
         background_color = color,
-        color = highlightedColor
+        color = highlightedColor,
+
     }
 
     local w = wibox.widget {
         bar,
         {
-            text,
+            {
+                text,
+                widget = wibox.widget.background,
+                fg = palette.current_line
+            },
             widget = wibox.container.margin,
             left = m,
             right = m + margin

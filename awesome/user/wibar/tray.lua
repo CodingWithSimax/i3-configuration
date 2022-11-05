@@ -7,7 +7,7 @@ local widget = require("user.wibar.widget")
 local palette = require("themes.dracula.palette")
 
 return function (s, height, color)
-    local margin = 2
+    local margin = 5
 
     return widget ({
         wibox.widget.systray(),
