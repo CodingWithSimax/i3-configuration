@@ -16,7 +16,9 @@ local function rgb2hex(r, g, b)
     return "#" .. string.format("%x", rgb)
 end
 
-return function (s, color, h)
+return function (s, color, h, force_width)
+    force_width = force_width or 100
+
     local colorRGB = hex2rgb(color)
     colorRGB[1] = math.max(0, colorRGB[1] - 30)
     colorRGB[2] = math.max(0, colorRGB[2] - 30)
@@ -31,7 +33,7 @@ return function (s, color, h)
     }
     local bar = wibox.widget {
         -- widget,
-        forced_width = 100,
+        forced_width = force_width,
         forced_height = h,
         max_value = 1,
         value = 0.50,

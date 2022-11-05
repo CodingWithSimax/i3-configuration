@@ -15,6 +15,7 @@ local keyboard = require('user.wibar.keyboard')
 local ram = require('user.wibar.ram')
 local volume = require('user.wibar.volume')
 local tray = require('user.wibar.tray')
+local battery = require('user.wibar.battery')
 
 local palette = require('themes.dracula.palette')
 
@@ -57,10 +58,11 @@ return function (s)
         -- s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
+            keyboard(s, height, palette.cyan),
             volume(s, palette.purple, height),
             ram(s, palette.red, height),
-            keyboard(s, height, palette.orange),
             textclock(s, height, palette.yellow),
+            battery(s, height, palette.orange),
             tray(s, height, palette.background),
             layoutbox(s, palette.red, height),
         },
