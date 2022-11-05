@@ -55,7 +55,6 @@ return function (s)
             s.mypromptbox,
         },
         nil,
-        -- s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             keyboard(s, height, palette.cyan),
@@ -63,7 +62,11 @@ return function (s)
             ram(s, palette.red, height),
             textclock(s, height, palette.yellow),
             battery(s, height, palette.orange),
-            tray(s, height, palette.background),
+            {
+                layout = awful.widget.only_on_screen,
+                tray(s, height, palette.background),
+                screen = "primary"
+            },
             layoutbox(s, palette.red, height),
         },
     }
