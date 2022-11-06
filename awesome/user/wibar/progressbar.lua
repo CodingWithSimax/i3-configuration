@@ -16,7 +16,7 @@ local function rgb2hex(r, g, b)
     return "#" .. string.format("%x", rgb)
 end
 
-return function (s, color, h, force_width)
+return function (s, color, h, force_width, on_click)
     force_width = force_width or 100
 
     local colorRGB = hex2rgb(color)
@@ -45,8 +45,15 @@ return function (s, color, h, force_width)
 
         background_color = color,
         color = highlightedColor,
-
     }
+
+    if on_click then
+        bar:connect_signal("button::press", function (self, lx, ly, button, mods, find_widgets_result)
+            local progress = lx / find_widgets_result.width
+            on_click(progress)
+            bar:set_value(progress)
+        end)
+    end
 
     local w = wibox.widget {
         bar,

@@ -8,7 +8,9 @@ local progressbar = require("user.wibar.progressbar")
 local vicious = require("vicious")
 
 return function (s, color, h)
-    local data = progressbar(s, color, h)
+    local data = progressbar(s, color, h, nil, function (progress)
+        awful.util.spawn("pactl set-sink-volume @DEFAULT_SINK@ " .. math.floor(progress*100) .. "%", false)
+    end)
 
     vicious.cache(vicious.widgets.volume)
     vicious.register(data.bar, vicious.widgets.volume,
