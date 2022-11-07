@@ -12,22 +12,15 @@ local helpers = require('vicious.helpers')
 return function (s, color, h)
 
     local max_time = 10
-    local old_playing = false
 
     local not_playing = 10
 
-    local show_player = false
 
     local libFunction = {
         async = function (format, warg, callback)
             local formattedString = ""
 
             local output1 = ' {{ title }} - {{ artist }}'
-
-            if show_player then
-                output1 = '  {{ playerName }}'
-                show_player = false
-            end
 
             local output2 = '{{ position / mpris:length * 100 }}'
             local output3 = '{{ status }}'
@@ -61,10 +54,6 @@ return function (s, color, h)
                 output_done = function ()
                     local state = formattedString
 
-                    if playing and not old_playing then
-                        show_player = true
-                        state = " Started Playing"
-                    end
 
                     if not playing and not_playing < 20 then
                         not_playing = not_playing + 1
