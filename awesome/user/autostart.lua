@@ -22,10 +22,10 @@ end
 
 return function ()
     -- autostart
-    awful.spawn.with_shell("picom --experimental-backends")
     awful.spawn.with_shell(os.getenv('HOME') .. '/.config/awesome/resolution.sh')
 
     if not is_restart() then
+        awful.spawn.with_shell("picom --experimental-backends")
         awful.spawn.with_shell("jetbrains-toolbox --minimize")
     end
 end

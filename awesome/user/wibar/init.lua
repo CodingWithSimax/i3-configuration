@@ -17,6 +17,7 @@ local volume = require('user.wibar.volume')
 local tray = require('user.wibar.tray')
 local battery = require('user.wibar.battery')
 local music = require('user.wibar.music')
+local tasklist = require('user.wibar.tasklist')
 
 local palette = require('themes.dracula.palette')
 
@@ -54,6 +55,7 @@ return function (s)
             },
             s.mytaglist,
             s.mypromptbox,
+            tasklist(s)
         },
         nil,
         { -- Right widgets
