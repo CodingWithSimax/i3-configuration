@@ -79,9 +79,18 @@ return function (s)
                         client_tag_element.text = "" .. c.first_tag.name
                     end)
 
-                    if not c.class then return end
-                    c.theme_icon = c.theme_icon or menubar.utils.lookup_icon(string.lower(c.class)) or c.icon
-                    self:get_children_by_id('icon_role_extended')[1].image = c.theme_icon
+                    local function update_icon()
+                        c.theme_icon = c.theme_icon or menubar.utils.lookup_icon(string.lower(c.class)) or c.icon
+                        self:get_children_by_id('icon_role_extended')[1].image = c.theme_icon
+                    end
+
+                    if not c.class then
+                        c:connect_signal("property::class", function ()
+                            update_icon()
+                        end)
+                    else
+                        update_icon()
+                    end
                 end,
             }
         },
