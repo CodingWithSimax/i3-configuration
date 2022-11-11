@@ -22,16 +22,17 @@ return function (s, color, h)
 
             local output1 = ' {{ title }} - {{ artist }}'
 
-            local output2 = '{{ position / mpris:length * 100 }}'
+            local output2 = '{{ position }}'
             local output3 = '{{ status }}'
-            local output4 = '{{ mpris:length / 1000 / 1000 }}'
+            local output4 = '{{ mpris:length }}'
 
             local count = 0
             local progress = 0
+            local current_time = 0
             local playing = false
 
 
-            spawn.with_line_callback_with_shell('playerctl metadata --format "' .. output1 .. "\n" .. output2 .. "\n" .. output3 .. "\n" .. output4 .. '"', {
+            spawn.with_line_callback('playerctl metadata --format "' .. output1 .. "\n" .. output2 .. "\n" .. output3 .. "\n" .. output4 .. '"', {
                 stdout = function (line)
                     count = count + 1
                     if count == 1 then
@@ -39,20 +40,34 @@ return function (s, color, h)
                     elseif count == 2 then
                         local result = tonumber(line)
                         if result ~= nil then
-                            progress = math.floor(result)
+                            current_time = math.floor(result / 1000 / 1000)
                         end
                     elseif count == 3 and line == "Playing" then
                         playing = true
                         not_playing = 0
                     elseif count == 4 then
+                        if line == "" then
+                            max_time = -1
+                            return
+                        end
+
                         local result = tonumber(line)
                         if result ~= nil then
-                            max_time = math.floor(result)
+                            max_time = math.floor(result / 1000 / 1000)
                         end
                     end
                 end,
                 output_done = function ()
+                    local has_length = max_time ~= -1
+
                     local state = formattedString
+
+                    if not has_length then
+                        progress = 100
+                        state = state .. "   "
+                    else
+                        progress = current_time / max_time * 100
+                    end
 
 
                     if not playing and not_playing < 20 then
