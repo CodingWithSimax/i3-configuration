@@ -56,7 +56,11 @@ return function (s, color, h, force_width, on_click)
         bar,
         {
             {
-                text,
+                {
+                    text,
+                    widget = wibox.container.constraint,
+                    width = 300
+                },
                 widget = wibox.container.background,
                 fg = color
             },
