@@ -19,18 +19,12 @@ end
 return function (s, color, h, force_width, on_click)
     force_width = force_width or 100
 
-    local colorRGB = hex2rgb(color)
-    colorRGB[1] = math.max(0, colorRGB[1] - 30)
-    colorRGB[2] = math.max(0, colorRGB[2] - 30)
-    colorRGB[3] = math.max(0, colorRGB[3] - 30)
-
-    local highlightedColor = rgb2hex(colorRGB[1], colorRGB[2], colorRGB[3])
-
     local m = h/2
 
     local text = wibox.widget {
         widget = wibox.widget.textbox
     }
+    local bar_height = 4
     local bar = wibox.widget {
         -- widget,
         forced_width = force_width,
@@ -39,12 +33,15 @@ return function (s, color, h, force_width, on_click)
         value = 0.50,
 
         widget = wibox.widget.progressbar,
-        shape = gears.shape.transform(function (cr, width, height)
-            gears.shape.powerline(cr, width, height, -m)
-        end),
+        shape = function (cr, width, height)
+            gears.shape.partially_rounded_rect(cr, width, bar_height, true, true, true, true, 0)
+        end,
+        bar_shape = function (cr, width, height)
+            gears.shape.hexagon(cr, width, bar_height, bar_height/2)
+        end,
 
-        background_color = color,
-        color = highlightedColor,
+        background_color = palette.background,
+        color = color,
     }
 
     if on_click then
@@ -61,11 +58,11 @@ return function (s, color, h, force_width, on_click)
             {
                 text,
                 widget = wibox.container.background,
-                fg = palette.current_line
+                fg = color
             },
             widget = wibox.container.margin,
             left = m,
-            right = m + margin
+            right = m
         },
 
         layout = wibox.layout.stack,

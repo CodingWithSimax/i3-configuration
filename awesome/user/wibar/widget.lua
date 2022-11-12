@@ -17,24 +17,25 @@ return function (w, color, h, right_background)
 
     return wibox.widget {
         -- widget,
-        {
-            w,
-            widget = wibox.container.margin,
-            left = m,
-            right = right_margin
-        },
+        -- {
+        --     w,
+        --     widget = wibox.container.margin,
+        --     left = m,
+        --     right = right_margin
+        -- },
+        w,
 
         widget = wibox.container.background,
-        shape = gears.shape.transform(function (cr, width, height)
-            if right_background then
-                gears.shape.rectangular_tag(cr, width, height, m)
-            else
-                gears.shape.powerline(cr, width, height, -m)
-            end
-        end),
+        -- shape = gears.shape.transform(function (cr, width, height)
+        --     if right_background then
+        --         gears.shape.rectangular_tag(cr, width, height, m)
+        --     else
+        --         gears.shape.powerline(cr, width, height, -m)
+        --     end
+        -- end),
 
-        bg = color,
-        fg = palette.current_line
+        -- bg = color,
+        fg = color
 
     }
 end

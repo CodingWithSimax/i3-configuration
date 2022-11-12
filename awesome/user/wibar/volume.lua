@@ -15,10 +15,13 @@ return function (s, color, h)
     vicious.cache(vicious.widgets.volume)
     vicious.register(data.bar, vicious.widgets.volume,
         function (widget, args)
-            data.text:set_text(args[2] .. " Volume: " .. args[1] .. "%")
+ -- gears.shape.partially_rounded_rect(cr, w, 2, true, true, true, true, 0)           
+            data.text:set_text("Volume: " .. args[1] .. "%")
+            -- data.text:set_text("Hallo")
             -- local gb = math.floor((args[2] / 1000 * 10) + 0.5) / 10
             -- bar:set_value(0.3)
             --
+            data.set_value(args[1])
             return args[1]
         end,
         1, {"Master", "-D", "pulse"}

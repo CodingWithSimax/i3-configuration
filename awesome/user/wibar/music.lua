@@ -11,7 +11,6 @@ local helpers = require('vicious.helpers')
 
 return function (s, color, h)
 
-    local max_time = 10
 
     local not_playing = 10
 
@@ -30,6 +29,8 @@ return function (s, color, h)
             local progress = 0
             local current_time = 0
             local playing = false
+
+            local max_time = 10
 
 
             spawn.with_line_callback('playerctl metadata --format "' .. output1 .. "\n" .. output2 .. "\n" .. output3 .. "\n" .. output4 .. '"', {
@@ -63,7 +64,7 @@ return function (s, color, h)
                     local state = formattedString
 
                     if not has_length then
-                        progress = 100
+                        progress = 0
                         state = state .. "   "
                     else
                         progress = current_time / max_time * 100
@@ -78,10 +79,13 @@ return function (s, color, h)
 
                     if not playing and not_playing < 3 then
                         state = " Stopped"
+                        progress = 0
                     end
 
                     callback({
                         progress = progress,
+                        max_time = max_time,
+                        current_time = current_time,
                         state = state,
                         playing = playing or not_playing < 3
                     })
@@ -91,21 +95,43 @@ return function (s, color, h)
     }
     local lib = helpers.setasyncall(libFunction)
 
+    local update_time = 4
+    local timer_time = 1
+    local current_time = 0
+    local max_time = 0
+
     local data = progressbar(s, color, h, nil, function (progress)
         awful.util.spawn("playerctl position " .. math.floor(progress*max_time), false)
     end)
 
+
+    gears.timer.start_new(timer_time, function ()
+        if max_time <= 0 then return true end
+        current_time = current_time + timer_time
+        data.bar:set_value(current_time / max_time)
+
+        return true
+    end)
+
     vicious.cache(vicious.widgets.volume)
-    vicious.register(data.bar, lib,
+    vicious.register(data.text, lib,
         function (widget, args)
-            data.text:set_text(args.state)
+            -- data.text:set_text(args.state)
             data.set_hidden(not args.playing)
+            current_time = args.current_time
+            max_time = args.max_time
+
+            if args.progress == 0 then
+                data.bar:set_value(args.progress)
+                max_time = -1
+            end
             -- local gb = math.floor((args[2] / 1000 * 10) + 0.5) / 10
             -- bar:set_value(0.3)
             --
-            return args.progress
+            -- return args.progress
+            return args.state
         end,
-        4
+        update_time
     )
 
     return data.widget
