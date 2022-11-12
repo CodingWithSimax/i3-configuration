@@ -8,6 +8,7 @@ function keys.update_keys(globalkeys, modkey)
     globalkeys = require('user.keys.client').update_keys(globalkeys, modkey)
     globalkeys = require('user.keys.media').update_keys(globalkeys, modkey)
     globalkeys = require('user.keys.tasklist').update_keys(globalkeys, modkey)
+    globalkeys = require('user.keys.neovide').update_keys(globalkeys, modkey)
 
     return globalkeys
 end

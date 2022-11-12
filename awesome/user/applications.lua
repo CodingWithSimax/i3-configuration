@@ -1,4 +1,5 @@
 local awful = require('awful')
+local gears = require('gears')
 
 return function ()
     -- get primary and secondary screen
@@ -36,5 +37,8 @@ return function ()
             move_and_focus(c, secondary.tags[#secondary.tags - 1])
             return
         end
+
+        -- for testing
+        -- awful.spawn.with_shell("notify-send " .. c.class)
     end)
 end

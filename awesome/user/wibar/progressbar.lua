@@ -37,6 +37,7 @@ return function (s, color, h, force_width, on_click)
             gears.shape.partially_rounded_rect(cr, width, bar_height, true, true, true, true, 0)
         end,
         bar_shape = function (cr, width, height)
+            if width == 0 then return end
             gears.shape.hexagon(cr, width, bar_height, bar_height/2)
         end,
 
