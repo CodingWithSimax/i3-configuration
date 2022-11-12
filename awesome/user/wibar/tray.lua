@@ -12,9 +12,9 @@ return function (s, height, color)
     return widget ({
         wibox.widget.systray(),
 
-        bottom = margin,
-        top = margin,
+        margins = margin,
+        -- top = margin,
 
         widget = wibox.container.margin
-    }, palette.current_line, height, false)
+    }, palette.background, height, false)
 end

@@ -100,13 +100,17 @@ return function (s, color, h)
     local current_time = 0
     local max_time = 0
 
+    local should_update = true
+
     local data = progressbar(s, color, h, nil, function (progress)
         awful.util.spawn("playerctl position " .. math.floor(progress*max_time), false)
+        should_update = false
     end)
 
 
     gears.timer.start_new(timer_time, function ()
         if max_time <= 0 then return true end
+        if not should_update then return true end
         current_time = current_time + timer_time
         data.bar:set_value(current_time / max_time)
 
@@ -129,6 +133,7 @@ return function (s, color, h)
             -- bar:set_value(0.3)
             --
             -- return args.progress
+            should_update = true
             return args.state
         end,
         update_time

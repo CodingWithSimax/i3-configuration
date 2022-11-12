@@ -21,7 +21,7 @@ theme.bg_normal     = "#222222"
 theme.bg_focus      = "#535d6c"
 theme.bg_urgent     = "#ff0000"
 theme.bg_minimize   = "#444444"
-theme.bg_systray    = palette.current_line
+theme.bg_systray    = palette.background
 theme.systray_icon_spacing = 5
 
 -- theme.fg_normal     = "#aaaaaa"
