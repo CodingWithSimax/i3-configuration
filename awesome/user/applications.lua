@@ -20,7 +20,10 @@ return function ()
     local function move_and_focus(c, tag)
         c:tags({tag})
         tag:view_only()
-        awful.spawn.with_shell("notify-send toggle")
+    end
+
+    local function move()
+
     end
 
     client.connect_signal("property::class", function (c)
@@ -29,7 +32,7 @@ return function ()
             return
         end
 
-        if c.class == "discord" then
+        if c.class == "discord" or c.class == "Discord" then
             move_and_focus(c, secondary.tags[#secondary.tags - 1])
             return
         end
