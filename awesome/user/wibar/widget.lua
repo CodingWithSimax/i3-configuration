@@ -7,7 +7,7 @@ local palette = require("themes.dracula.palette")
 local margin = 5
 
 return function (w, color, h, right_background)
-    local m = h/2
+    local m = 2
 
     local right_margin = m + margin
 
@@ -17,13 +17,13 @@ return function (w, color, h, right_background)
 
     return wibox.widget {
         -- widget,
-        -- {
-        --     w,
-        --     widget = wibox.container.margin,
-        --     left = m,
-        --     right = right_margin
-        -- },
-        w,
+        {
+            w,
+            widget = wibox.container.margin,
+            left = m,
+            right = m
+        },
+        -- w,
 
         widget = wibox.container.background,
         -- shape = gears.shape.transform(function (cr, width, height)
