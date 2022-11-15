@@ -21,7 +21,6 @@ return function (s, color, h)
             -- local gb = math.floor((args[2] / 1000 * 10) + 0.5) / 10
             -- bar:set_value(0.3)
             --
-            data.set_value(args[1])
             return args[1]
         end,
         1, {"Master", "-D", "pulse"}

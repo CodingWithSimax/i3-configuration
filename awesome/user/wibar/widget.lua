@@ -16,26 +16,38 @@ return function (w, color, h, right_background)
     end
 
     return wibox.widget {
-        -- widget,
         {
-            w,
-            widget = wibox.container.margin,
-            left = m,
-            right = m
+            -- widget,
+            {
+                w,
+                widget = wibox.container.margin,
+                left = m,
+                right = m
+            },
+            -- w,
+
+            widget = wibox.container.background,
+
+            shape = function (cr, w, h)
+                gears.shape.partially_rounded_rect(cr, w, h, true, true, true, true, 5)
+            end,
+            shape_clip = true,
+            shape_border_width = 1,
+            shape_border_color = palette.current_line_bright,
+            -- shape = gears.shape.transform(function (cr, width, height)
+            --     if right_background then
+            --         gears.shape.rectangular_tag(cr, width, height, m)
+            --     else
+            --         gears.shape.powerline(cr, width, height, -m)
+            --     end
+            -- end),
+
+            -- bg = color,
+            fg = color
         },
-        -- w,
-
-        widget = wibox.container.background,
-        -- shape = gears.shape.transform(function (cr, width, height)
-        --     if right_background then
-        --         gears.shape.rectangular_tag(cr, width, height, m)
-        --     else
-        --         gears.shape.powerline(cr, width, height, -m)
-        --     end
-        -- end),
-
-        -- bg = color,
-        fg = color
+        widget = wibox.container.margin,
+        left = 4,
+        right = 4
 
     }
 end

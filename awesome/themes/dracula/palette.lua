@@ -1,6 +1,7 @@
 return {
     background = "#282a36",
     current_line = "#44475a",
+    current_line_bright = "#696b7a",
     foreground = "#f8f8f2",
     comment = "#6272a4",
     cyan = "#8be9fd",

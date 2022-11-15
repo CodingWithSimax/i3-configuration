@@ -54,23 +54,38 @@ return function (s, color, h, force_width, on_click)
     end
 
     local w = wibox.widget {
-        bar,
         {
             {
+                bar,
                 {
-                    text,
-                    widget = wibox.container.constraint,
-                    width = 300
+                    {
+                        {
+                            text,
+                            widget = wibox.container.constraint,
+                            width = 300
+                        },
+                        widget = wibox.container.background,
+                        fg = color
+                    },
+                    widget = wibox.container.margin,
+                    left = m,
+                    right = m
                 },
-                widget = wibox.container.background,
-                fg = color
-            },
-            widget = wibox.container.margin,
-            left = m,
-            right = m
-        },
 
-        layout = wibox.layout.stack,
+                layout = wibox.layout.stack,
+            },
+            widget = wibox.container.background,
+
+            shape = function (cr, w, h)
+                gears.shape.partially_rounded_rect(cr, w, h, true, true, true, true, 5)
+            end,
+            shape_clip = true,
+            shape_border_width = 1,
+            shape_border_color = palette.current_line_bright,
+        },
+        widget = wibox.container.margin,
+        left = 4,
+        right = 4
     }
 
     return {

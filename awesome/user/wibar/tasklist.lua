@@ -2,6 +2,7 @@ local awful = require("awful")
 local wibox = require("wibox")
 local gears = require("gears")
 local menubar = require("menubar")
+local palette = require("themes.dracula.palette")
 
 return function (s)
     return wibox.widget {
@@ -17,10 +18,11 @@ return function (s)
             filter   = awful.widget.tasklist.filter.alltags,
             -- buttons  = tasklist_buttons,
             style    = {
-                shape_border_width = 0,
+                shape_border_width = 1,
+                shape_border_color = palette.current_line_bright,
                 shape  = function (cr, w, h)
                     local margin = 5
-                    gears.shape.transform(gears.shape.rounded_rect) : translate(margin/2, margin/2) (cr, w-margin, h-margin, 5)
+                    gears.shape.transform(gears.shape.rounded_rect) : translate(margin/2, margin/2) (cr, w-margin, h-margin, 4)
                 end
             },
             layout   = {
