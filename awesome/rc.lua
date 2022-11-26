@@ -42,6 +42,7 @@ do
     end)
 end
 -- }}}
+--
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
