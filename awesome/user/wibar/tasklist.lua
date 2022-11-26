@@ -40,9 +40,12 @@ return function (s, height)
                             widget  = wibox.container.margin,
                         },
                         {
-                            id = "client_tag",
-                            widget = wibox.widget.textbox,
-                            text = "0"
+                            {
+                                id = "client_tag",
+                                widget = wibox.widget.textbox,
+                                text = "0"
+                            },
+                            widget = wibox.container.margin
                         },
                         layout = wibox.layout.fixed.horizontal,
                     },
@@ -67,8 +70,11 @@ return function (s, height)
                     end)
 
                     local function update_icon()
-                        c.theme_icon = c.theme_icon or menubar.utils.lookup_icon(string.lower(c.class)) or c.icon
-                        self:get_children_by_id('icon_role_extended')[1].image = c.theme_icon
+                        -- awful.spawn.with_shell("notify-send '" .. menubar.utils.lookup_icon(string.lower(c.class)) .. "'")
+                        c.theme_icon = c.theme_icon or menubar.utils.lookup_icon(string.lower(c.class))
+                        if c.theme_icon then
+                            self:get_children_by_id('icon_role_extended')[1].image = c.theme_icon
+                        end
                     end
 
                     if not c.class then
@@ -83,7 +89,7 @@ return function (s, height)
         },
 
         widget = wibox.container.margin,
-        left = -1,
-        right = -1
+        -- left = -1,
+        -- right = -1
     }, palette.foreground, height, false)
 end

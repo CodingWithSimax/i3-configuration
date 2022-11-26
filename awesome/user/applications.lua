@@ -19,22 +19,19 @@ return function ()
     end
 
     local function move_and_focus(c, tag)
-        c:tags({tag})
+        c:move_to_screen(tag.screen)
+        c:move_to_tag(tag)
         tag:view_only()
-    end
-
-    local function move()
-
     end
 
     client.connect_signal("property::class", function (c)
         if c.class == "Spotify" then
-            move_and_focus(c, secondary.tags[#secondary.tags])
+            move_and_focus(c, secondary.tags[#secondary.tags - 1])
             return
         end
 
         if c.class == "discord" or c.class == "Discord" then
-            move_and_focus(c, secondary.tags[#secondary.tags - 1])
+            move_and_focus(c, secondary.tags[#secondary.tags - 2])
             return
         end
 
