@@ -526,7 +526,7 @@ end)
 --     require('user.titlebar')(c)
 -- end)
 
-awful.screen.set_auto_dpi_enabled(true)
+-- awful.screen.set_auto_dpi_enabled(true)
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
