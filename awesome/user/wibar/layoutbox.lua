@@ -13,24 +13,9 @@ return function (s, color, h)
                            awful.button({ }, 4, function () awful.layout.inc( 1) end),
                            awful.button({ }, 5, function () awful.layout.inc(-1) end)))
 
-    return wibox.widget {
+    return widget({
         mylayoutbox,
         widget = wibox.container.margin,
-        right = 4,
-        left = 4
-    }
-    -- return widget(mylayoutbox, color, h, true)
-
-    -- return wibox.widget {
-    --     -- widget,
-    --     mylayoutbox,
-    --     widget = wibox.container.background,
-    --     shape = gears.shape.transform(function (cr, width, height)
-    --         gears.shape.partially_rounded_rect(cr, width, height)
-    --     end),
-    --
-    --     bg = color,
-    --     fg = palette.current_line
-
-
+        margins = 2
+    }, palette.current_line, h, false)
 end

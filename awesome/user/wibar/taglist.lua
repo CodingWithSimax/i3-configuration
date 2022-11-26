@@ -3,7 +3,10 @@ local awful = require("awful")
 local wibox = require("wibox")
 local gears = require("gears")
 
-return function (s)
+local custom_widget = require('user.wibar.widget')
+local palette = require('themes.dracula.palette')
+
+return function (s, height)
     local focused = false
 
     local function update()
@@ -54,14 +57,14 @@ return function (s)
                 widget = wibox.container.margin,
             },
             id     = 'background_role',
-            -- bg = "#ff0000",
-            -- shape = function (cr, w, h)
-            --     gears.shape.partially_rounded_rect(cr, w, 2, true, true, true, true, 0)
-            -- end,
             widget = wibox.container.background,
-            -- Add support for hover colors and an index label
+            create_callback = function (self, c3, index, objects)
+                self:connect_signal("button::press", function ()
+                    objects[index]:view_only()
+                end)
+            end
         }
     }
 
-    return widget
+    return custom_widget(widget, palette.purple, height, false)
 end

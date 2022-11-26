@@ -11,6 +11,10 @@ local function tasklist_move(change)
 
     local clients = client.get()
 
+    table.sort(clients, function (c1, c2)
+        return c1.first_tag.index < c2.first_tag.index
+    end)
+
     local filtered_clients = {}
     for index = 1, #clients do
         local c2 = clients[index]
@@ -19,12 +23,6 @@ local function tasklist_move(change)
         end
     end
     clients = filtered_clients
-
-    table.sort(clients, function (c1, c2)
-        return c1.first_tag.index < c2.first_tag.index
-    end)
-
-
 
     local found_index = 0
     for index = 1, #clients do

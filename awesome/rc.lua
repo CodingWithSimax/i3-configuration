@@ -157,12 +157,13 @@ end
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
 
+local setup_tags = require('user.tags')
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
+    setup_tags(s)
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -524,6 +525,8 @@ end)
 --
 --     require('user.titlebar')(c)
 -- end)
+
+awful.screen.set_auto_dpi_enabled(true)
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)

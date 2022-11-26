@@ -3,9 +3,10 @@ local wibox = require("wibox")
 local gears = require("gears")
 local menubar = require("menubar")
 local palette = require("themes.dracula.palette")
+local widget = require("user.wibar.widget")
 
-return function (s)
-    return wibox.widget {
+return function (s, height)
+    return widget ({
         awful.widget.tasklist {
             screen   = s,
             source = function (s, args)
@@ -18,25 +19,9 @@ return function (s)
             filter   = awful.widget.tasklist.filter.alltags,
             -- buttons  = tasklist_buttons,
             style    = {
-                shape_border_width = 1,
-                shape_border_color = palette.current_line_bright,
-                shape  = function (cr, w, h)
-                    local margin = 5
-                    gears.shape.transform(gears.shape.rounded_rect) : translate(margin/2, margin/2) (cr, w-margin, h-margin, 4)
-                end
             },
             layout   = {
-                spacing = 10,
-                spacing_widget = {
-                    {
-                        forced_width = 5,
-                        shape        = gears.shape.circle,
-                        widget       = wibox.widget.separator
-                    },
-                    valign = 'center',
-                    halign = 'center',
-                    widget = wibox.container.place,
-                },
+                spacing = 3,
                 layout  = wibox.layout.flex.horizontal
             },
             -- Notice that there is *NO* wibox.wibox prefix, it is a template,
@@ -98,6 +83,7 @@ return function (s)
         },
 
         widget = wibox.container.margin,
-        left = 10,
-    }
+        left = -1,
+        right = -1
+    }, palette.foreground, height, false)
 end

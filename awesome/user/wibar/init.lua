@@ -22,11 +22,14 @@ local tasklist = require('user.wibar.tasklist')
 
 local palette = require('themes.dracula.palette')
 
+local xresources = require("beautiful.xresources")
+local dpi = xresources.apply_dpi
+
 return function (s)
-    local height = 30
+    local height = dpi(37)
     local border = 1
     local inner_margin = 2
-    local outer_margin = 5
+    local outer_margin = 0
 
     s.mywibox = awful.wibar({
         position = "top",
@@ -38,7 +41,7 @@ return function (s)
         -- bg = "#282a36"
     })
 
-    s.mytaglist = taglist(s)
+    s.mytaglist = taglist(s, height)
 
     -- local tray = ni
     -- if not loaded then
@@ -63,7 +66,7 @@ return function (s)
                         },
                         s.mytaglist,
                         s.mypromptbox,
-                        tasklist(s)
+                        tasklist(s, height)
                     },
                     nil,
                     { -- Right widgets
@@ -85,13 +88,7 @@ return function (s)
                 widget = wibox.container.margin,
                 margins = border + inner_margin
             },
-            shape = function (cr, w, h)
-                gears.shape.partially_rounded_rect(cr, w, h, true, true, true, true, 5)
-            end,
-            shape_border_width = border,
-            shape_border_color = palette.current_line_bright,
             widget = wibox.container.background,
-            bg = palette.background
         },
         layout = wibox.container.margin,
         margins = outer_margin,
