@@ -29,15 +29,24 @@ return function (s, height)
             widget_template = {
                 {
                     {
+                        -- {
+                        --     {
+                        --         id     = 'icon_role_extended',
+                        --         widget = wibox.widget.imagebox
+                        --     },
+                        --     top = 6,
+                        --     bottom = 6,
+                        --     right = 6,
+                        --     widget  = wibox.container.margin,
+                        -- },
                         {
                             {
-                                id     = 'icon_role_extended',
-                                widget = wibox.widget.imagebox
+                                id = "client_name",
+                                widget = wibox.widget.textbox,
+                                text = "undefined"
                             },
-                            top = 6,
-                            bottom = 6,
-                            right = 6,
-                            widget  = wibox.container.margin,
+                            fg = palette.orange,
+                            widget = wibox.container.background
                         },
                         {
                             {
@@ -45,6 +54,7 @@ return function (s, height)
                                 widget = wibox.widget.textbox,
                                 text = "0"
                             },
+                            left = 10,
                             widget = wibox.container.margin
                         },
                         layout = wibox.layout.fixed.horizontal,
@@ -69,21 +79,33 @@ return function (s, height)
                         client_tag_element.text = "" .. c.first_tag.name
                     end)
 
-                    local function update_icon()
-                        -- awful.spawn.with_shell("notify-send '" .. menubar.utils.lookup_icon(string.lower(c.class)) .. "'")
-                        c.theme_icon = c.theme_icon or menubar.utils.lookup_icon(string.lower(c.class))
-                        if c.theme_icon then
-                            self:get_children_by_id('icon_role_extended')[1].image = c.theme_icon
+                    local client_name_element = self:get_children_by_id("client_name")[1]
+
+                    local function apply_theme()
+                        local s = ""
+                        if string.len(c.class) >= 7 then
+                            s = string.sub(c.class, 1, 5) .. ".."
+                        else
+                            s = c.class
                         end
+                        client_name_element.text = s
                     end
 
-                    if not c.class then
-                        c:connect_signal("property::class", function ()
-                            update_icon()
-                        end)
-                    else
-                        update_icon()
+                    if c.class then
+                        apply_theme()
                     end
+                    c:connect_signal("property::class", function ()
+                        apply_theme()
+                    end)
+
+                    -- local function update_icon()
+                    --     -- awful.spawn.with_shell("notify-send '" .. menubar.utils.lookup_icon(string.lower(c.class)) .. "'")
+                    --     c.theme_icon = c.theme_icon or menubar.utils.lookup_icon(string.lower(c.class))
+                    --     if c.theme_icon then
+                    --         self:get_children_by_id('icon_role_extended')[1].image = c.theme_icon
+                    --     end
+                    -- end
+
                 end,
             }
         },

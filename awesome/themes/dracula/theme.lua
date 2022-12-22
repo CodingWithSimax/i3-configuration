@@ -34,7 +34,7 @@ theme.border_width  = dpi(2)
 theme.border_normal = "#282a36"
 theme.border_focus  = "#bd93f9"
 theme.border_marked = "#91231c"
-theme.gap_single_client = false
+-- theme.gap_single_client = false
 
 theme.notification_max_height = 120
 theme.notification_opacity = 0.7

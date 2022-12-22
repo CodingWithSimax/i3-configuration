@@ -493,9 +493,9 @@ client.connect_signal("manage", function (c)
     -- if not awesome.startup then awful.client.setslave(c) end
 
     -- rounded rect
-    -- c.shape = function (cr, w, h)
-    --     gears.shape.rounded_rect(cr, w, h, 8)
--- end
+    c.shape = function (cr, w, h)
+        gears.shape.rounded_rect(cr, w, h, 8)
+    end
 
     -- c.size_hints.min_width = 0
     -- c.size_hints.min_height = 0
