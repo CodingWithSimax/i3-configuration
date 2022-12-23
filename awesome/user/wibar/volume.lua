@@ -23,7 +23,7 @@ return function (s, color, h)
             --
             return args[1]
         end,
-        1, {"Master", "-D", "pulse"}
+        1, {"Master"}
     )
 
     return data.widget
