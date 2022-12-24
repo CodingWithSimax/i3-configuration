@@ -30,9 +30,9 @@ function rofi.update_keys(globalkeys, mod)
         ),
 
         awful.key(
-            {mod}, "space",
+            {}, "Print",
             function ()
-                awful.util.spawn(os.getenv('HOME') .. '/.config/rofi/launchers/type-2/launcher.sh')
+                awful.util.spawn(os.getenv('HOME') .. '/.config/rofi/applets/bin/screenshot.sh')
             end,
             {description="show help", group="awesome"}
         )
