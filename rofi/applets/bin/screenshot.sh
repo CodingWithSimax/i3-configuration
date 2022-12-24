@@ -76,7 +76,7 @@ fi
 
 # notify and view screenshot
 notify_view() {
-	notify_cmd_shot='dunstify -u low --replace=699'
+	notify_cmd_shot='notify-desktop'
 	${notify_cmd_shot} "Copied to clipboard."
 	viewnior ${dir}/"$file"
 	if [[ -e "$dir/$file" ]]; then
