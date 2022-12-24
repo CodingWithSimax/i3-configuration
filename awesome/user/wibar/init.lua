@@ -26,7 +26,7 @@ local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 
 return function (s)
-    local height = dpi(37)
+    local height = dpi(25)
     local border = 1
     local inner_margin = 2
     local outer_margin = 0

@@ -15,7 +15,7 @@ local palette = require('themes.dracula.palette')
 
 local gears = require('gears')
 
-theme.font          = "CaskaydiaCove Nerd Font Regular 13"
+theme.font          = "CaskaydiaCove Nerd Font Regular 10"
 
 theme.bg_normal     = "#222222"
 theme.bg_focus      = "#535d6c"
