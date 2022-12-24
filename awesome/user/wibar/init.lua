@@ -57,7 +57,7 @@ return function (s)
         {
             {
                 {
-                    layout = wibox.layout.align.horizontal,
+                    layout = wibox.layout.flex.horizontal,
                     { -- Left widgets
                         layout = wibox.layout.fixed.horizontal,
                         {
@@ -68,7 +68,7 @@ return function (s)
                         s.mypromptbox,
                         tasklist(s, height)
                     },
-                    nil,
+                    -- nil,
                     { -- Right widgets
                         layout = wibox.layout.fixed.horizontal,
                         keyboard(s, height, palette.cyan),
