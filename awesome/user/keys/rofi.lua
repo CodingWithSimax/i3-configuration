@@ -27,7 +27,7 @@ function rofi.update_keys(globalkeys, mod)
                 awful.util.spawn(os.getenv('HOME') .. '/.config/rofi/applets/bin/screenarea.sh')
             end,
             {description="show help", group="awesome"}
-        )
+        ),
 
         awful.key(
             {mod}, "b",
