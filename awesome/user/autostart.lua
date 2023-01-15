@@ -28,5 +28,6 @@ return function ()
         awful.spawn.with_shell("picom")
         awful.spawn.with_shell("nm-applet")
         awful.spawn.with_shell("jetbrains-toolbox --minimize")
+        awful.spawn.with_shell("mkdir -p /home/simon/googledrive && rclone mount googledrive: /home/simon/googledrive --vfs-cache-mode full")
     end
 end
