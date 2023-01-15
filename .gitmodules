@@ -4,3 +4,6 @@
 [submodule "awesome/themes/dracula/wallpapers"]
 	path = awesome/themes/dracula/wallpapers
 	url = https://github.com/dracula/wallpaper.git
+[submodule "awesome/themes/dracula/wallpaper"]
+	path = awesome/themes/dracula/wallpaper
+	url = https://github.com/dracula/wallpaper.git
