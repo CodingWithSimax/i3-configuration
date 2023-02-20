@@ -44,6 +44,7 @@ end
 -- }}}
 --
 
+
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init(os.getenv("HOME") .. "/.config/awesome/themes/dracula/theme.lua")
@@ -52,6 +53,8 @@ beautiful.init(os.getenv("HOME") .. "/.config/awesome/themes/dracula/theme.lua")
 terminal = "kitty"
 editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
+
+package.loaded["naughty.dbus"] = {}
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
