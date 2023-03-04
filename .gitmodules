@@ -7,3 +7,6 @@
 [submodule "awesome/themes/dracula/wallpaper"]
 	path = awesome/themes/dracula/wallpaper
 	url = https://github.com/dracula/wallpaper.git
+[submodule "tmux/tmux-power"]
+	path = tmux/tmux-power
+	url = https://github.com/wfxr/tmux-power.git
